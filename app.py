@@ -8,11 +8,32 @@ conn.execute(
     especialidad VARCHAR(50) NOT NULL,
     telefono VARCHAR(20));
     """)
-conn.execute(
-    """ INSERT INTO medicos (nombre,apellido,especialidad,telefono)
-        VALUES ('LUIS','PEREZ','CIRUJANO','12341233');
 
-    """
+conn.execute(
+    """CREATE TABLE IF NOT EXISTS pacientes (
+    id_paciente INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(50) NOT NULL,
+    apellido VARCHAR(50) NOT NULL,
+    CI VARCHAR(20) UNIQUE NOT NULL,
+    fecha_nacimiento DATE NOT NULL,
+    telefono VARCHAR(20)
+);
+    """    
 )
+
+
+#conn.execute(
+#   """ INSERT INTO medicos (nombre,apellido,especialidad,telefono)
+#        VALUES ('LUIS','PEREZ','CIRUJANO','12341233');
+
+#    """
+#)
+conn.execute("""
+    INSERT INTO pacientes (nombre,apellido,CI,fecha_nacimiento,telefono)
+    VALUES ('roberto','quispe','7842154 LP','2000-12-12','547457224');
+
+
+""")
+
 conn.commit()
 
